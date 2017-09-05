@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+           <meta name="apple-touch-fullscreen" content="yes">
+           <meta name="full-screen" content="yes">
+           <meta name="apple-mobile-web-app-capable" content="yes">
+           <meta name="apple-mobile-web-app-status-bar-style" content="white">
+           <meta name="format-detection" content="telephone=no">
+           <meta name="format-detection" content="address=no">
+			<link rel="stylesheet" href="css/fonts.css">
+			<link rel="stylesheet" href="css/dropload.css">
+			<link rel="stylesheet" href="css/common.css"/>
+			<script src="js/jquery.min.js"></script>
+            <script type="text/javascript" charset="UTF-8" src="js/fontsize.js"></script>
+			<style>
+				body,html{
+					background-color: #fff;
+					overflow: hidden;
+					height: 100%;
+				}
+				.icon-iconfont-dingwei,.distance span{
+					color: #666!important;
+				}
+				.bottom{
+					position: relative;
+				}
+				
+/******/				
+.newHosue_list .item{ display:block;}
+
+.newHosue_list .wrap .house_name{
+	display:box; 
+	display:-webkit-box; 
+	display:-moz-box; 
+	display:-ms-flexbox;
+	line-height:0.5rem;
+	}
+
+.newHosue_list .wrap .house_name .name{
+	display:block;
+	 max-width:64%; 
+	 font-size:0.46rem; 
+	 font-weight:bold;
+	  overflow:hidden;
+	  color:#333;
+    text-overflow:ellipsis;
+     white-space:nowrap;
+     }
+.newHosue_list .wrap .house_name span.grade{ 
+	display:block;
+	 height:0.4rem; 
+	 font-size:0.375rem;
+	  padding:0 0.1rem 0 0.4rem; 
+	  border:1px solid #e8382b; 
+	  border-radius:0.1rem;
+	   margin-top:0.05rem; 
+	   line-height:0.4rem; 
+	   color:#e8382b; 
+	   margin-left:0.2rem;
+	   }
+.newHosue_list .wrap .house_txt{
+	display:box; 
+	display:-webkit-box; 
+	display:-moz-box; 
+	display:-ms-flexbox;
+	 font-size:0.35rem;
+    line-height:0.35rem; 
+        color:#666;
+}
+.newHosue_list .wrap .house_txt1{
+	line-height:0.35rem;
+	 margin:0.1rem 0 0.1rem 0;
+	 max-height:0.35rem;
+	 overflow:hidden;
+	 }
+
+.newHosue_list .wrap .house_txt2{ color:#ea4c40;}
+.newHosue_list .wrap .house_txt2 span{
+	 font-size:0.4rem;
+ font-weight:bold;
+ }		
+				
+		.pic img{
+			width: 2.3rem;
+			height: 1.91rem;
+			display: block;
+		}	
+		.newHosue_list .pic{ 
+			position:relative;
+			}
+		.newHosue_list .wrap{
+			margin-left:0.3rem;
+			box-flex:2; 
+			-webkit-box-flex:2; 
+			-ms-box-flex:2;
+			-moz-box-flex:2; 
+			position:relative;
+			}
+			.newHosue_list .cnt{
+				 padding-left:0; 
+				 display:box;
+				 display:-webkit-box;
+				  display:-moz-box; 
+				  display:-ms-flexbox; 
+				  padding-top:0.1rem; 
+				  padding-bottom:0.1rem;
+				  }
+				  
+			</style>
+			<title>酒店民宿</title>
+			</head>
+<body>
+	
+
+<div class="lead_header" >
+	<p class="p1">
+		<i class="icon-jiudian"></i>
+		<span class="arder_2">酒店</span>
+	</p>
+	<p class="p2">
+		<input type="text" name="shop_name" class="search" placeholder="请输入店铺名称">
+		<span id="search" class="lead_header_btn icon-sousuo"></span>
+	</p>
+</div>
+<!-- 下拉框-->
+<div class="opacity" style="display: none;"></div>
+<div class="dropDown" style="display: none;">
+	<ul class="list1">
+		<li data="0">全部</li>
+		<li data="1">一级</li>
+		<li data="2">二级</li>
+	</ul>
+	<ul class="list2" style="display: none;">
+		<li class="twocate" data="0">大家</li>
+		<li class="twocate" data="0">大家</li>
+		<li class="twocate" data="0">大家</li>
+		<li class="twocate" data="0">大家</li>
+		<li class="twocate" data="0">大家</li>
+		<li class="twocate" data="0">大家</li>
+		<li class="twocate" data="0">大家</li>
+		<li class="twocate" data="0">大家</li>
+	</ul>
+	<img style="width: 100%;height: auto;position: absolute;bottom: -5%;left: 0;" src="images/border_down.png" alt=""/>
+</div>
+
+<div class="wrapper" style="position: relative; overflow: auto;">
+	<div id="pullrefresh" class=" up_load" style="width: 100%;position: absolute; top: 0; overflow: auto;bottom:0px;">
+
+		<ul id="list" class="newHosue_list">
+		</ul>
+	</div>
+	
+	<div class="suqianTicket_hei"></div>
+</div>
+
+
+<div id="pageFooter">
+</div>
+</body>
+<script>
+	
+	$.getScript("js/pageTemplate.js",function(){
+		pageTemp.footer();
+	
+	});
+var count=0;
+
+ var NewsJs={
+ 	  limit:7,
+ 	  page:1,
+ 	  showlist:function(pagecount){
+ 	  var temp='';
+ 	  	 
+ 	  	 if(NewsJs.page<=pagecount){
+ 	  	 	pullObject.noData(false);
+ 	  	 for(var i=0;i<NewsJs.limit;i++){
+	 	  	 temp+='<a href="javascript:;" class="item">';
+	         temp+='<div class="cnt">';
+	         temp+='<div class="pic">';
+             temp+='<img src="images/detail_big_img.jpg" style="background-image: none;">';
+             temp+='</div>';
+             temp+='<div class="wrap">';
+             temp+='<div class="house_name">';
+             temp+='<span class="name">阳光城愉景湾</span>';
+             temp+='<span class="grade ml5">4.14</span>';
+             temp+='</div>';
+             temp+='<div class="house_txt">浦东-川沙</div>';
+             temp+='<div class="house_txt house_txt1">';
+             temp+='<span class="mr5">品牌开发商</span>';
+             temp+='<span>户型紧凑实用</span>';
+             temp+='</div>';
+             temp+='<div class="house_txt house_txt2">';
+             temp+='<span class="key_txt">12,000</span>元/平';
+             temp+='</div>';
+             temp+='</div>';
+             temp+='</div>';
+             temp+='</a>';
+             count++;
+            
+            }
+ 	  	 $("#list").append(temp);
+ 	  	 }
+ 	  	 if(NewsJs.page>pagecount){
+ 	  	 	
+				// 无数据
+			//	$('.dropload-noData').show();
+			//$('.dropload-load').hide();
+			//$('.dropload-refresh').hide();
+				pullObject.noData();
+				 pullObject.lock();
+				 pullObject.resetload();
+             		return false;
+ 	  	 }
+ 	  	 
+             	// 每次数据加载完，必须重置
+		       pullObject.resetload();
+		     NewsJs.page++;
+		     console.log(NewsJs.page);
+          
+ 	  	 
+ 	  	
+ 	  },
+ 	  list:function(){
+ 	  	NewsJs.showlist(3);
+ 	  }
+ 	  
+ }
+	$(document).ready(function(){
+		
+		$.getScript('js/dropload.min.js', function () {
+			var eleMenus=$("#list").on("click",'a',function(event){
+				var hf=$(this).attr('href');
+				location.href=hf;
+
+			});
+			$('#pullrefresh').dropload({
+				domDown : {
+					domClass   : 'dropload-down',
+					domRefresh : '<div class="dropload-refresh">↑上拉加载更多</div>',
+					domLoad    : '<div class="dropload-load"><span class="loading"></span>加载中...</div>',
+					domNoData  : '<div class="dropload-noData">没有更多数据了</div>'
+				},
+				loadDownFn : function(me){
+					pullObject = me;
+					NewsJs.list();
+				},
+				threshold : 50
+			});
+//			$("#search").click(function(){
+//				pullObject.unlock();
+//				
+//				$("#list").empty();
+//				
+//			});
+		});        
+   
+	
+		var wrapperH = document.querySelector('div.wrapper');
+	
+		var bodyH = document.documentElement.clientHeight;//网页正文全文高
+		wrapperH.style.height = (bodyH - 105) + 'px';
+	
+               $(".arder_2").click(function (){
+						$(".dropDown").toggle();
+						$(".opacity").toggle();
+					});
+						$(".list1>li").click(function () {
+						$(this).addClass("chooise").siblings().removeClass("chooise");
+						
+						$(".list2").show();
+						$('.twocate').click(function(){
+							$(".dropDown").hide();
+							$(".opacity").hide();
+						
+						});
+
+					});
+					$(".opacity").click(function(){
+						$(".dropDown").hide();
+						$(this).hide();
+					})
+	})
+</script>
+</html>
