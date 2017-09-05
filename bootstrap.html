@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta charset="UTF-8">
+		<title></title>
+		  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="css/fonts.css">
+		<link rel="stylesheet" href="bootstrap-3.3.6-dist/css/bootstrap.css" />
+		<link rel="stylesheet" href="css/swiper.min.css" />
+		<script src="bootstrap-3.3.6-dist/js/jquery-1.11.3.js"></script>
+		<script src="bootstrap-3.3.6-dist/js/bootstrap.js"></script>
+		<style>
+		body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre, form, fieldset, input, p, blockquote, th, td { margin:0; padding:0; }
+fieldset, img { border:0; }
+ol, ul { list-style:none; }
+h1, h2, h3, h4, h5, h6{ font-size:100%; }
+em { font-style:normal; }
+input, button, select, textarea { outline:none; }
+a{ color:#333; text-decoration:none;}
+a:hover{ color:#333; text-decoration:none;}
+*{
+    font-family: "微软雅黑";
+    font-size: 12px;
+}
+html,body{
+	background-color: rgb(240,240,240);
+    width: 100%;
+    height: 100%;
+    /*background-color: white;*/
+    /*background-color: #f0f0f0;*/
+}
+			 body{
+               padding-top: 50px;
+         }   
+         ul{
+         	list-style: none;
+         } 
+	       .carousel{
+	        height: 200px;
+	        background-color: #000;
+	        }
+
+	    .carousel .item{
+	      height: 200px;
+	      background-color: #000;
+	    }
+	   .carousel .item img{
+	      width: 100%;
+	      height: 200px;
+	    }
+	    .casousel-caption p{
+	      margin-bottom:20px;
+	      font-size: 20px;
+	      line-height: 1.8;
+	    }
+	  
+    .modal-content{
+    	top: 150px;
+    }
+    .modal-content .container{
+    	padding-top: 20px;
+    	padding-bottom: 20px;
+    }
+    .label_pasd,.label_email{
+    	margin-top: 8px;
+    }
+    .rt{
+    	float: right;
+    }
+    .list_row{
+    	cursor: pointer;
+    	margin: 0;
+    	padding-bottom: 10px;
+    	padding-top: 10px;
+    	overflow: hidden;
+    	border-bottom: 1px solid #ddd;
+    }
+    .container .row{
+    	padding-top: 10px;
+    	
+    }
+    .container{
+    	margin-top: 10px;
+    	background-color: #fff;
+    }
+    .navbar .nav_container{
+    	background-color:#333;
+    	margin-top: 0;
+    }
+    #carousel_container{
+    	padding: 0;
+    	margin-top: 0;
+    }
+     .swiper-container {
+        width:100%;
+        height:40px;
+        
+    }
+    .swiper-slide {
+    	text-align:center;
+        font-size:18px;
+        background:#fff;
+        /* Center slide text vertically */
+        display:-webkit-box;
+        display:-ms-flexbox;
+        display:-webkit-flex;
+        display:flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        align-items: center;
+        width: 100%;
+    	
+    }
+   .swiper-slide P{
+   	padding: 0 5px;
+   	font-size: 14PX;
+   	overflow: hidden;
+    	text-overflow:ellipsis;
+    	white-space: nowrap;
+   }
+		</style>
+	</head>
+	<body>
+		<!--导航-->
+		 <nav class="navbar navbar-default navbar-fixed-top navbar-inverse ">
+		    <div class="container nav_container">
+		      <div class="navbar-header">
+		        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		          <span class="sr-only">Toggle navigation</span>
+		          <span class="icon-bar"></span>
+		          <span class="icon-bar"></span>
+		          <span class="icon-bar"></span>
+		        </button>
+		        <a class="navbar-brand" href="#">我和她</a>
+		      </div>
+		      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		        <ul class="nav navbar-nav">
+		          <li class="active"><a href="#">首页 <span class="sr-only">(current)</span></a></li>
+		          <li><a href="#">简述</a></li>
+		           <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">特点</a>
+				              <ul class="dropdown-menu">
+				                  <li><a href="#">动物1</a></li>
+				                  <li><a href="#">动物2</a></li>
+				                  <li><a href="#">动物3</a></li>
+				                  <li><a href="#">动物4</a></li>
+				              </ul>
+				 </li>
+		          <li><a href="#">关于</a></li> 
+		     
+		      </div>
+		    </div>
+		 </nav>
+		 
+		 <!--轮播-->
+		 <div class="container" id="carousel_container">
+		 	 <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+		    <!-- Indicators -->
+		    <!--<ol class="carousel-indicators">
+		      <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+		      <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+		      <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+		    </ol>
+		-->
+		    <!-- Wrapper for slides -->
+		    <!--广告轮播-->
+		     <!-- Swiper -->
+   
+		    <div class="carousel-inner" role="listbox">
+		      <div class="item active">
+		        <img src="images/sirendingzhi1.jpg" alt="...">
+		        <div class="carousel-caption">
+		          <h1>疯狂动物城1</h1>
+		          <p>来扩大感受到的女生看房名卡位的访问怒法师开门了国家发生的两个号</p>
+		        </div>
+		      </div>
+		      <div class="item">
+		        <img src="images/sirendingzhi2.jpg" alt="...">
+		        <div class="carousel-caption">
+		         <h1>疯狂动物城1</h1>
+		　　　　  <p>来扩大感受到的女生看房名卡位的访问怒法师开门了国家发生的两个号</p>
+		        </div>
+		      </div>
+		       <div class="item">
+		        <img src="images/sirendingzhi3.jpg" alt="...">
+		        <div class="carousel-caption">
+		         <h1>疯狂动物城1</h1>
+		　　　　  <p>来扩大感受到的女生看房名卡位的访问怒法师开门了国家发生的两个号</p>
+		        </div>
+		      </div>
+		    </div>
+		
+		    <!--左右切换的箭头-->
+		    <!--<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+		      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+		      <span class="sr-only">上一页</span>
+		    </a>
+		    <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+		      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+		      <span class="sr-only">下一页</span>
+		    </a>-->
+		  </div>
+	
+		 </div>
+		
+	    <!--内容-->
+	    <!--广告位-->
+	    <div class="swiper-container">
+	        <div class="swiper-wrapper">
+	            <div class="swiper-slide" data-swiper-autoplay="2000">
+	            	<p>2016.12.3 最新消息：习近平来习近平来访杭州西湖访杭州西湖哈哈哈哈哈哈哈好尴尬呵呵呵或</p>
+	            </div>
+	             <div class="swiper-slide" data-swiper-autoplay="2000">
+	            	<p>2016.12.3 最新消息：习近平来习近平来访杭州西湖访杭州西湖哈哈哈哈哈哈哈好尴尬呵呵呵或</p>
+	            </div>
+	              <div class="swiper-slide" data-swiper-autoplay="2000">
+	            	<p>2016.12.3 最新消息：习近平来习近平来访杭州西湖访杭州西湖哈哈哈哈哈哈哈好尴尬呵呵呵或</p>
+	            </div>
+	              <div class="swiper-slide" data-swiper-autoplay="2000">
+	            	<p>2016.12.3 最新消息：习近平来习近平来访杭州西湖访杭州西湖哈哈哈哈哈哈哈好尴尬呵呵呵或</p>
+	            </div>
+	              <div class="swiper-slide" data-swiper-autoplay="2000">
+	            	<p>2016.12.3 最新消息：习近平来习近平来访杭州西湖访杭州西湖哈哈哈哈哈哈哈好尴尬呵呵呵或</p>
+	            </div>
+	             <div class="swiper-slide" data-swiper-autoplay="2000">
+	            	<p>2016.12.3 最新消息：习近平来习近平来访杭州西湖访杭州西湖哈哈哈哈哈哈哈好尴尬呵呵呵或</p>
+	            </div>
+	        </div>
+	        <!-- Add Pagination -->
+	        <div class="swiper-pagination" style="display: none;"></div>
+	    </div>
+	    <div class="container">
+	    	<div class="row">
+		  <div class="col-sm-6 col-md-6 col-xs-6  col-lg-6">
+		    <div class="thumbnail">
+		      <img src="images/detail_big_img.jpg" alt="...">
+		      <div class="caption">
+		        <h4>妮妮</h4>
+		        <p>嘤嘤嘤嘤嘤嘤来看看好可怜江湖救急还可</p>
+		       
+		      </div>
+		    </div>
+		  </div>
+		  <div class="col-sm-6 col-md-6 col-xs-6  col-lg-6">
+		    <div class="thumbnail">
+		      <img src="images/detail_big_img.jpg" alt="...">
+		      <div class="caption">
+		        <h4>妮妮</h4>
+		        <p>嘤嘤嘤嘤嘤嘤来看看好可怜江湖救急还可</p>
+		       
+		      </div>
+		    </div>
+		  </div>
+		</div>
+	    </div>
+	    <!--巨幕-->
+		
+	  <div class="container">
+			 <div class="row">
+				  <div class="col-sm-6 col-md-4 col-xs-4">
+				    <div class="thumbnail">
+				      <img src="images/detail_big_img.jpg" alt="..." class="img-circle">
+				     </div>
+				   
+				  </div>
+		  
+				<div class="col-sm-6 col-md-4 col-xs-4">
+					<div class="thumbnail">
+					   <img src="images/detail_big_img.jpg" alt="..." class="img-circle">
+				     </div>
+			    </div>
+			    <div class="col-sm-6 col-md-4 col-xs-4">
+					<div class="thumbnail">
+					   <img src="images/detail_big_img.jpg" alt="..." class="img-circle">
+				     </div>
+			    </div>
+		  </div>
+		</div>
+	
+	
+	<div class="container">
+		<ul>
+			<li>
+				<div class="row list_row" data-toggle="collapse" data-target="#collapseExample0" aria-expanded="false" aria-controls="collapseExample0">
+				 	 <span>新闻资讯</span>
+				 	 <span class="rt">
+				 	 	<span>更多</span>
+				 	 	<span class="glyphicon glyphicon-chevron-right "></span>
+				 	 </span>
+					
+				 </div>
+				 <div class="collapse" id="collapseExample0">
+					<div class="well">
+					 健康就好经济环境接口科技健康科技监控健康就好金晶科技看空间接口即可尽快交接尽快尽快尽快科技金晶科技看见看见看见
+					</div>
+				</div>
+			</li>
+			<li>
+				<div class="row list_row" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
+				 	 <span>新闻资讯</span>
+				 	 <span class="rt">
+				 	 	<span>更多</span>
+				 	 	<span class="glyphicon glyphicon-chevron-right "></span>
+				 	 </span>
+					
+				 </div>
+				 <div class="collapse" id="collapseExample1">
+					<div class="well">
+					 健康就好经济环境接口科技健康科技监控健康就好金晶科技看空间接口即可尽快交接尽快尽快尽快科技金晶科技看见看见看见
+					</div>
+				</div>
+			</li>
+		</ul>
+		 
+		
+	</div>
+      
+      
+     <!--模态框-->
+	<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="myModal">
+		  <div class="modal-dialog modal-lg">
+		    <div class="modal-content">
+		    	<div class="container">
+		    		 <form class="form-horizontal">
+				  <div class="form-group">
+				    <label for="inputEmail3" class="col-sm-2 control-label col-xs-3 label_email" >email：</label>
+				    <div class="col-sm-10 col-xs-9">
+				      <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <label for="inputPassword3" class="col-sm-2 control-label col-xs-3 label_pasd" >密码：</label>
+				    <div class="col-sm-10 col-xs-9">
+				      <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <div class="col-sm-offset-2 col-sm-10 col-xs-offset-3">
+				      <div class="checkbox">
+				        <label>
+				          <input type="checkbox">记住我
+				        </label>
+				      </div>
+				    </div>
+				  </div>
+				  <div class="form-group">
+				    <div class="col-sm-offset-2 col-sm-10 col-xs-offset-5">
+				      <button type="submit" class="btn btn-default">登 录</button>
+				    </div>
+				  </div>
+				</form>
+		    	</div>
+		     
+		    </div>
+		  </div>
+		</div>
+
+     
+   </body>
+    <script src="js/swiper.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        direction: 'vertical',
+         autoplay:2000,
+        loop:true,
+        speed:1000
+    });
+    </script>
+   <script>
+   
+   $(document).ready(function(){
+	$('#myModal').modal('show');
+   })
+   
+   </script>
+</html>
